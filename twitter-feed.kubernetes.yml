@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: twitter-feed-v2
+  name: twitter-feed-v1
   labels:
     commit: 9a8fa77277c4a8c3c96d96d4b804e83c26ac6cc0
 spec:
@@ -14,7 +14,7 @@ spec:
       labels:
         app: twitter-feed
         commit: 9a8fa77277c4a8c3c96d96d4b804e83c26ac6cc0
-        color: green
+        color: blue
     spec:
       containers:
       - name: twitter-feed
@@ -51,6 +51,6 @@ spec:
     targetPort: 8080
   selector:
     app: twitter-feed
-    color: green
+    color: blue
   type: ClusterIP
 ---
