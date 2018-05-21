@@ -17,6 +17,8 @@ build:
 push-release:
   steps:
     - internal/docker-push:
+        entrypoint: bin/get_ip
+        cmd: 0.0.0.0 8080
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         repository: $DOCKER_REPO
