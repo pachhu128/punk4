@@ -37,6 +37,7 @@ spec:
                 fieldPath: metadata.labels
       imagePullSecrets:
         - name: ${OKE_IMAGESECRET}
+        - name: wrecker
 ---
 apiVersion: v1
 kind: Service
