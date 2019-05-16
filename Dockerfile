@@ -11,7 +11,7 @@ RUN mvn dependency:go-offline -B
 COPY ./src ./src
 
 # build for release
-RUN mvn package
+RUN mvn package -DskipTests
 
 # set the startup command to run your binary
 CMD ["java", "-jar", "./target/my-project.jar"]
