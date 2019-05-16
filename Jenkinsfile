@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'mvn -B -DskipTests clean package' 
+                sh 'mvn clean package' 
             }
         }
         stage('Create docker image') { 
             steps {
-                sh 'docker build --build-arg USER=aditya93 --build-arg PASSWORD=Gangstre10893 -f Dockerfile -t twitterfeed:1 .' 
+                sh 'docker build -f Dockerfile -t twitterfeed:1 .' 
             }
         }
     }
