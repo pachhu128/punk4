@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Create docker image') { 
             steps {
-                sh 'sudo docker build . -t twitterfeed:1' 
+                sh 'docker build . -t twitterfeed:1' 
             }
         }
     }
