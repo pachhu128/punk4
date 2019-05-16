@@ -1,7 +1,7 @@
 #Dockerfile
 
 # select image
-FROM 3.6.1-jdk-11-slim
+FROM 3.6.1-jdk-8
 
 # copy the project files
 COPY ./pom.xml ./pom.xml
