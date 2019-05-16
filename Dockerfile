@@ -16,4 +16,4 @@ COPY ./src ./src
 RUN mvn clean assembly:assembly
 
 # set the startup command to run your binary
-CMD ["java", "-jar", "./target/my-project.jar"]
+CMD ["java", "-jar", "./target/twitterfeed.jar"]
