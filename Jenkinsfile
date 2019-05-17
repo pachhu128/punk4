@@ -2,6 +2,7 @@ pipeline {
     agent any
     
     stages {
+        
         stage('Build') { 
             steps {
                 sh "mvn install -DskipTests" 
@@ -9,7 +10,8 @@ pipeline {
         }
         stage('Create docker image') { 
             steps {
-                sh "docker build -f Dockerfile -t twitterfeed:1 ." 
+                env.GIT_COMMIT = scmVars.GIT_COMMIT
+                sh "docker build -f Dockerfile -t twitterfeed:${env.GIT_COMMIT} ." 
             }
         }
         stage('Push image to OCIR') { 
