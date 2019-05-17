@@ -10,8 +10,16 @@ pipeline {
         }
         stage('Create docker image') { 
             steps {
-                env.GIT_COMMIT = scmVars.GIT_COMMIT
-                sh "docker build -f Dockerfile -t twitterfeed:${env.GIT_COMMIT} ." 
+                script {
+                  def scmVars = checkout([
+                    $class: 'GitSCM',
+                    doGenerateSubmoduleConfigurations: false,
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/AdityaVishwekar/twitter-feed.git'
+                      ]],
+                    branches: [ [name: '*/master'] ]
+                  ])
+                sh "docker build -f Dockerfile -t twitterfeed:${scmVars.GIT_COMMIT} ." 
             }
         }
         stage('Push image to OCIR') { 
