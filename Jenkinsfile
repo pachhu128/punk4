@@ -19,5 +19,12 @@ pipeline {
                 sh "docker push iad.ocir.io/cloud_pursuit_west/twitterfeed"
             }
         }
+	# Stage to create a image secret
+	# Stage to deploy to k8s cluster
+	stage('Deploy image to K8s cluster') {
+            steps {
+                sh "kubectl --server=https://129.213.185.124:443 --token=1463b55add9f13ca70e2239f565aebef apply -f kubernetestwitter.yml"
+            }
+        }
     }
 }
