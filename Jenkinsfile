@@ -14,8 +14,12 @@ pipeline {
                   def scmVars = checkout([
                     $class: 'GitSCM',
                     doGenerateSubmoduleConfigurations: false,
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/AdityaVishwekar/twitter-feed.git'
+                      ]],
                     branches: [ [name: '*/master'] ]
                   ])
+                }
                 sh "docker build -f Dockerfile -t twitterfeed:${scmVars.GIT_COMMIT} ." 
             }
         }
