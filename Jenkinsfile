@@ -19,12 +19,5 @@ pipeline {
                 sh "docker push iad.ocir.io/cloud_pursuit_west/twitterfeed"
             }
         }
-	stage('Deploy image to K8s cluster') {
-            steps {
-		sh "chown jenkins:jenkins kubeconfig"
-                sh "export KUBECONFIG=kubeconfig"
-		sh "kubectl get nodes"
-            }
-        }
     }
 }
