@@ -21,6 +21,7 @@ pipeline {
         }
 	stage('Deploy image to K8s cluster') {
             steps {
+		sh "chown jenkins:jenkins kubeconfig"
                 sh "kubectl --server=https://129.213.185.124:443 --token=1463b55add9f13ca70e2239f565aebef apply -f kubernetestwitter.yml"
             }
         }
