@@ -34,9 +34,9 @@ pipeline {
                       ]],
                     branches: [ [name: '*/master'] ]
                   ])
-                sh "docker login -u cloud_pursuit_west/aditya.vishwekar@oracle.com -p I1mk-n7tMXW#ZWv8xkmP iad.ocir.io"
-                sh "docker tag twitterfeed:${scmVars.GIT_COMMIT} iad.ocir.io/cloud_pursuit_west/twitterfeed"
-                sh "docker push iad.ocir.io/cloud_pursuit_west/twitterfeed"
+                sh "docker login -u cloud_pursuit_west/aditya.vishwekar@oracle.com -p I1mk-n7tMXW#ZWv8xkmP iad.ocir.io/v2/"
+                sh "docker tag twitterfeed:${scmVars.GIT_COMMIT} iad.ocir.io/v2/cloud_pursuit_west/twitterfeed"
+                sh "docker push iad.ocir.io/v2/cloud_pursuit_west/twitterfeed"
                 sh "echo ${scmVars.GIT_COMMIT}"            
                }
             }
