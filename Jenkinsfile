@@ -19,8 +19,8 @@ pipeline {
                       ]],
                     branches: [ [name: '*/master'] ]
                   ])
-                }
                 sh "docker build -f Dockerfile -t twitterfeed:${scmVars.GIT_COMMIT} ." 
+                }
             }
         }
         stage('Push image to OCIR') { 
