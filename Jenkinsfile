@@ -22,7 +22,8 @@ pipeline {
 	stage('Deploy image to K8s cluster') {
             steps {
 		sh "chown jenkins:jenkins kubeconfig"
-                sh "pwd $KUBECONFIG"
+                sh "export KUBECONFIG=kubeconfig"
+		sh "kubectl get nodes"
             }
         }
     }
