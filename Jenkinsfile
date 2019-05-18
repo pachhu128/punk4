@@ -1,7 +1,6 @@
 pipeline {
     agent any
-    script {
-                  def scmVars = checkout([
+    def scmVars = checkout([
                     $class: 'GitSCM',
                     doGenerateSubmoduleConfigurations: false,
                     userRemoteConfigs: [[
@@ -29,5 +28,4 @@ pipeline {
                }
             }
         }
-    }
 }
