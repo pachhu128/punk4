@@ -2,6 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: twitter-feed-v1
+  labels:
+    commit: ${GIT_COMMIT}
 spec:
   replicas: 2
   selector:
@@ -42,6 +44,7 @@ metadata:
   name: twitter-feed
   labels:
     app: twitter-feed
+    commit: ${GIT_COMMIT}
 spec:
   ports:
   - port: 30000
