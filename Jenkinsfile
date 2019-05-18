@@ -38,8 +38,7 @@ pipeline {
                 sh "docker tag twitterfeed:${scmVars.GIT_COMMIT} iad.ocir.io/cloud_pursuit_west/twitterfeed:${scmVars.GIT_COMMIT}"
                 sh "docker push iad.ocir.io/cloud_pursuit_west/twitterfeed:${scmVars.GIT_COMMIT}" 
                 env.GIT_COMMIT = scmVars.GIT_COMMIT
-                echo "env.GIT_COMMIT"
-                echo "${env.GIT_COMMIT}"
+                sh "export GIT_COMMIT=${env.GIT_COMMIT}"
                 }
                }
             }
