@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: twitter-feed
-        image: iad.ocir.io/cloud_pursuit_west/twitterfeed:latest
+        image: iad.ocir.io/cloud_pursuit_west/twitterfeed:${GIT_COMMIT}
         imagePullPolicy: Always
         ports:
         - name: twitter-feed
