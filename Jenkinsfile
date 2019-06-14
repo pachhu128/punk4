@@ -15,7 +15,7 @@ pipeline {
                         $class: 'GitSCM',
                         doGenerateSubmoduleConfigurations: false,
                         userRemoteConfigs: [[
-                            url: 'https://github.com/AdityaVishwekar/twitter-feed.git'
+                            url: '${params.URL}'
                           ]],
                         branches: [ [name: '*/master'] ]
                       ])
@@ -30,13 +30,13 @@ pipeline {
                         $class: 'GitSCM',
                         doGenerateSubmoduleConfigurations: false,
                         userRemoteConfigs: [[
-                            url: 'https://github.com/AdityaVishwekar/twitter-feed.git'
+                            url: '${params.URL}'
                           ]],
                         branches: [ [name: '*/master'] ]
                       ])
-                    sh "docker login -u ${params.REGISTRY_USERNAME} -p ${params.REGISTRY_TOKEN} iad.ocir.io"
-                sh "docker tag twitterfeed:${scmVars.GIT_COMMIT} iad.ocir.io/cloud_pursuit_west/twitterfeed:${scmVars.GIT_COMMIT}"
-                sh "docker push iad.ocir.io/cloud_pursuit_west/twitterfeed:${scmVars.GIT_COMMIT}" 
+                sh "docker login -u ${params.REGISTRY_USERNAME} -p ${params.REGISTRY_TOKEN} iad.ocir.io"
+                sh "docker tag twitterfeed:${scmVars.GIT_COMMIT} ${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}"
+                sh "docker push ${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}" 
                 env.GIT_COMMIT = scmVars.GIT_COMMIT
                 sh "export GIT_COMMIT=${env.GIT_COMMIT}"
                 }
